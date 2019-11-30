@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@permaculture/data": ["libs/data/src/index.ts"]
+      "@permaculture/data": ["libs/data/src/index.ts"],
+      "@permaculture/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

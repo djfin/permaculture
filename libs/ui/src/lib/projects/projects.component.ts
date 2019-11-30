@@ -1,26 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import{ Project } from '@permaculture/data'
 
+
 @Component({
-  selector: 'permaculture-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'permaculture-projects',
+  templateUrl: './projects.component.html',
+  styleUrls: ['./projects.component.scss']
 })
-export class AppComponent {
+export class ProjectsComponent {
   title = 'permaculture-planner';
-  //projects: Project[] = [];
+  @Input() projects: Project[] = [];
 
   constructor(private http: HttpClient) {
-    //this.fetch();
+    this.fetch();
   }
 
-  /*fetch() {
+  fetch() {
     this.http.get<Project[]>('/api/projects').subscribe(p => (this.projects = p));
   }
   addProject(name:string, description:string) {
     this.http.post('/api/addProject/', {name,description},).subscribe(() => {
       this.fetch();
     });
-  }*/
+  }
 }
+

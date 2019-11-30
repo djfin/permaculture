@@ -1,15 +1,1 @@
-<h1>Projects</h1>
-<div>
-  <label>Project name:
-        <input #projectName />
-  </label>
-  <label>
-      <input #projectDescription/>
-  </label>
-  <button id=add-project (click)="addProject(projectName.value, projectDescription.value); projectName.value=''; projectDescription.value=''">
-      add
-  </button>
-</div>
-<ul>
-  <li *ngFor="let project of projects" class="project">{{ project.name }}</li>
-</ul>
+<router-outlet></router-outlet>
