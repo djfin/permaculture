@@ -1,0 +1,15 @@
+<div>
+    <label>Login</label><br>
+    <label>Username:
+          <input #username />
+    </label><br>
+    <label> Password:
+        <input #password/>
+    </label>
+    <button id=login-btn (click)='login(username.value, password.value)'>
+        Login
+    </button>
+</div>
+<div>
+    <a routerLink='newUser'>New User</a>
+</div>

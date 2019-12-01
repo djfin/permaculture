@@ -39,5 +39,25 @@ export class Project {
     constructor(name:string, description:string){
         this.name =name;
         this.description=description;
+        this.garden = new Array<Zone>();
+        this.eduCourse = new Array<Principle>();
     }
+  }
+  export class User {
+      username:string;
+      password:string;
+      email:string;
+      firstName:string;
+      lastName:string;
+      projects: Array<Project>;
+
+      constructor(username:string, password:string, email:string, firstName:string, lastName:string){
+          this.username=username;
+          this.password=password;
+          this.email=email;
+          this.firstName=firstName;
+          this.lastName=lastName;
+          this.projects = new Array<Project>();
+      }
+
   }

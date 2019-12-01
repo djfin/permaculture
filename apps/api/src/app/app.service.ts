@@ -1,14 +1,56 @@
 import { Injectable } from '@nestjs/common';
-import { Project } from '@permaculture/data'
+import { Project, User } from '@permaculture/data'
+
+
+class tester{
+  username:string;
+  password:string;
+  constructor(username:string, password:string){
+    this.username=username;
+    this.password=password;
+  }
+}
+class userWrapper{
+  user:User;
+}
+
 
 @Injectable()
 export class AppService {
-  projects: Array<Project> = new Array;
+  users: Array<any>= new Array();
 
-  getData(): Array<Project> {
-    return this.projects;
+  getData(){
+    return this.users;
   }
-  addProject(project:Project) {
-    this.projects.push(project);
+
+  login(username:string,password:string){
+    var user;
+    this.users.forEach(element=>{
+      var e = element as userWrapper;
+      if(e.user.username==username && e.user.password==password){
+        user = e.user
+      }
+    })
+    return user;
   }
+  addUser(user:User){
+    this.users.push(user);
+  }
+
+  /*getUserData(user:User): Array<Project> {
+    this.users.forEach(element => {
+      if(element === user){
+        return element.projects;
+      }
+    })
+    return null;
+  }
+  updateUser(user:User){
+    this.users.forEach(element => {
+      if(element.username== user.username && element.password==user.password){
+        element = user;
+        return element;
+      }
+    })
+  }*/
 }
