@@ -38,22 +38,39 @@ export class AppService {
   }
 
   getUserData(username:string) {
-    /*var user;
+    var user;
     this.users.forEach(element=>{
       var e = element as userWrapper;
       if(e.user.username==username){
         user = e.user
       }
     })
-    return user;*/
-    return this.users[0];
+    return user;
   }
-  updateUser(user:User){
-    this.users.forEach(element => {
-      if(element.username== user.username && element.password==user.password){
-        element = user;
-        return element;
+  addProject(username:string, project:Project){
+    var u;
+    this.users.forEach(element=>{
+      var e = element as userWrapper;
+      if(e.user.username==username){
+        u = e.user
       }
     })
+    return u.projects.push(project);
+  }
+  getProject(username:string,projectName:string){
+    var us;
+    var proj;
+    this.users.forEach(element=>{
+      var e = element as userWrapper;
+      if(e.user.username==username){
+        us = e.user
+        us.projects.forEach(el=>{
+          if(el.name==projectName){
+            proj=el;
+          }
+        })
+      }
+    })
+    return proj;
   }
 }

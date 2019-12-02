@@ -1,1 +1,17 @@
-<p>project-details works!</p>
+<div *ngIf='project$ | async as project'>
+<ul *ngFor="let zone of project.garden" class="zone">
+  <li >
+    <a routerLink='/users/{{username}}/projects/{{project.name}}/garden/{{zone.name}}'>
+      <span class="badge">{{zone.id}}</span> {{zone.name}}
+    </a>
+  </li>
+</ul>
+<ul *ngFor="let principle of project.eduCourse" class="principle">
+        <li >
+          <a routerLink='/users/{{username}}/projects/{{project.name}}/eduCourse/{{principle.name}}'>
+            <span class="badge">{{principle.id}}</span> {{principle.name}}
+          </a>
+        </li>
+      </ul>
+</div>
+

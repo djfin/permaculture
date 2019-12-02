@@ -1,3 +1,6 @@
+import { deepEqual } from 'assert';
+import { ThrowStmt } from '@angular/compiler';
+
 export class ToDo{
     name: string;
     dueDate:Date;
@@ -18,6 +21,12 @@ export class Zone{
     name:string;
     description:string;
     beds:Array<GardenBed>
+
+    constructor(name:string, description:string){
+        this.name=name;
+        this.description=description;
+        this.beds=new Array();
+    }
 }
 export class Activity{
     prompt: string;
@@ -28,6 +37,12 @@ export class Principle{
     name:string;
     description:string;
     activities: Array<Activity>
+
+    constructor(name:string, description:string){
+        this.name=name;
+        this.description=description;
+        this.activities=new Array();
+    }
 }
 
 export class Project {

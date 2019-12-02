@@ -9,9 +9,11 @@ import { UiModule } from 'libs/ui/src/lib/ui.module';
 import { ProjectsComponent } from './projects/projects.component';
 import { LoginComponent } from './login/login.component';
 import { NewUserComponent } from './new-user/new-user.component';
+import { ZoneDetailsComponent } from './zone-details/zone-details.component';
+import { PrincipleDetailsComponent } from './principle-details/principle-details.component';
 
 @NgModule({
-  declarations: [AppComponent, ProjectDetailsComponent, ProjectsComponent, LoginComponent, NewUserComponent],
+  declarations: [AppComponent, ProjectDetailsComponent, ProjectsComponent, LoginComponent, NewUserComponent, ZoneDetailsComponent, PrincipleDetailsComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

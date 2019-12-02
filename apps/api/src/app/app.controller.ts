@@ -13,7 +13,7 @@ export class AppController {
   }*/
 
   @Get('users/')
-  getUserData(@Query() user){
+  getUserData(@Query('user') user){
     return this.appService.getUserData(user);
   }
 
@@ -21,11 +21,15 @@ export class AppController {
   login(@Query('user') user, @Query('pass') pass) {
    return this.appService.login(user,pass);
   }
-  /*@Post('updateUser/')
-  updateUser(@Body() user:User) {
-    console.log("in Controller, user =" + user);
-    return this.appService.updateUser(user);
-  }*/
+
+  @Get('getProject/')
+  getProject(@Query('user') user, @Query('project') project){
+    return this.appService.getProject(user,project);
+  }
+  @Post('addProject/')
+  addProject(@Body('user') user:string, @Body('project') project:Project) {
+    return this.appService.addProject(user,project);
+  }
   @Post('addUser/')
   addUser(@Body() user:User){
     return this.appService.addUser(user);

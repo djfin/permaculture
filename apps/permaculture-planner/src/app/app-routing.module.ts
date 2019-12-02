@@ -4,6 +4,8 @@ import { ProjectDetailsComponent} from './project-details/project-details.compon
 import { ProjectsComponent } from './projects/projects.component';
 import { LoginComponent } from './login/login.component';
 import { NewUserComponent } from './new-user/new-user.component';
+import { ZoneDetailsComponent } from './zone-details/zone-details.component';
+import { PrincipleDetailsComponent } from './principle-details/principle-details.component';
 const routes: Routes = [
     {
         path: '',
@@ -19,9 +21,19 @@ const routes: Routes = [
         
     },
     {
-        path:'detail/:name',
+        path:'users/:user/projects/:project',
         component: ProjectDetailsComponent,
         pathMatch: 'full'
+    },
+    {
+        path:'users/:user/projects/:project/garden/:zone',
+        component:ZoneDetailsComponent,
+        pathMatch:'full'
+    },
+    {
+        path:'users/:user/projects/:project/eduCourse/:principle',
+        component:PrincipleDetailsComponent,
+        pathMatch:'full'
     }
 ];
 @NgModule({

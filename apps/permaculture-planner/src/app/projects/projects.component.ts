@@ -22,9 +22,9 @@ export class ProjectsComponent implements OnInit {
 
   fetch() {
     //console.log(this.activatedRoute.snapshot.paramMap.get('user'));
-    const username = this.activatedRoute.snapshot.paramMap.get('user');
+    this.username = this.activatedRoute.snapshot.paramMap.get('user');
     let params = new HttpParams()
-    .set('user',username)
+    .set('user',this.username)
     this.user$ = this.http.get<User>('/api/users/',{params})
     this.user$.forEach(user=>{
       console.log(user)
@@ -33,7 +33,9 @@ export class ProjectsComponent implements OnInit {
     console.log(test);*/
   }
   addProject(name:string, description:string) {
-    this.http.post('/api/addProject/', {name,description},).subscribe(() => {
+    var project =new Project(name,description);
+    const user=this.username
+    this.http.post('api/addProject/', {user,project},).subscribe(() => {
       this.fetch();
     });
   }
