@@ -14,7 +14,7 @@
   <label> Last Name:
       <input #lastName/>
   </label><br>
-  <button id=add-User (click)='addUser(username.value, password.value, email.value, firstName.value, lastName.value);'>
+  <button id=add-User (click)='addUser(username.value.trim(), password.value.trim(), email.value, firstName.value, lastName.value);'>
       add
   </button>
 </div>

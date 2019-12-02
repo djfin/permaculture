@@ -14,9 +14,9 @@ const routes: Routes = [
         component: NewUserComponent
     },
     {
-        path:'projects/:user',
+        path:'users/:user/projects',
         component: ProjectsComponent,
-        pathMatch: 'full'
+        
     },
     {
         path:'detail/:name',

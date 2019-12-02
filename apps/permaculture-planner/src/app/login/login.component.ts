@@ -16,15 +16,16 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
   login(username:string, password:string){
-    var u;
     var user = username.trim();
     var pass = password.trim();
     let params = new HttpParams()
     .set('user',user)
     .set('pass',pass)
-    var rep = this.http.get<Observable<User>>('api/login/',{params});
+    var rep = this.http.get<User>('api/login/',{params});
     rep.subscribe(val=>{
-      console.log(val)
+      if(val!=null){
+        this.router.navigate(['users/',val.username.trim(),'projects'])
+      }
     });
   }
 }

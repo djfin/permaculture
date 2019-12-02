@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Project, User } from '@permaculture/data';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'permaculture-projects',
@@ -9,8 +10,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
-  @Input() user:User;
-
+  @Input() username:string;
+  private user$:Observable<User>;
   projects: Project[] = [];
 
   constructor(private http: HttpClient, private activatedRoute:ActivatedRoute) {
@@ -20,8 +21,16 @@ export class ProjectsComponent implements OnInit {
   }
 
   fetch() {
-    const test = this.activatedRoute.snapshot.paramMap.get('user')
-    console.log(test);
+    //console.log(this.activatedRoute.snapshot.paramMap.get('user'));
+    const username = this.activatedRoute.snapshot.paramMap.get('user');
+    let params = new HttpParams()
+    .set('user',username)
+    this.user$ = this.http.get<User>('/api/users/',{params})
+    this.user$.forEach(user=>{
+      console.log(user)
+    })
+    /*const test = this.activatedRoute.snapshot.paramMap.get('user')
+    console.log(test);*/
   }
   addProject(name:string, description:string) {
     this.http.post('/api/addProject/', {name,description},).subscribe(() => {

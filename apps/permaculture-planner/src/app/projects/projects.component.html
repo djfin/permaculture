@@ -10,10 +10,12 @@
       add
   </button>
 </div>
-<ul *ngFor="let project of projects" class="project">
+<div *ngIf="user$ | async as user">
+  <label></label>
+<ul *ngFor="let project of user.user.projects" class="project">
   <li >
-      <a routerLink='/detail/{{project.name}}'>
-        <span class="badge">{{project.id}}</span> {{project.name}}
-      </a>
+      <label>{{project.name}}</label>
   </li>
 </ul>
+</div>
+

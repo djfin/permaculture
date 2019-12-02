@@ -7,9 +7,14 @@ import { userInfo } from 'os';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('users')
+  /*@Get('users')
   getData(){
     return this.appService.getData();
+  }*/
+
+  @Get('users/')
+  getUserData(@Query() user){
+    return this.appService.getUserData(user);
   }
 
   @Get('login/')

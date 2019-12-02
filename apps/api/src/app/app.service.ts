@@ -37,13 +37,16 @@ export class AppService {
     this.users.push(user);
   }
 
-  /*getUserData(user:User): Array<Project> {
-    this.users.forEach(element => {
-      if(element === user){
-        return element.projects;
+  getUserData(username:string) {
+    /*var user;
+    this.users.forEach(element=>{
+      var e = element as userWrapper;
+      if(e.user.username==username){
+        user = e.user
       }
     })
-    return null;
+    return user;*/
+    return this.users[0];
   }
   updateUser(user:User){
     this.users.forEach(element => {
@@ -52,5 +55,5 @@ export class AppService {
         return element;
       }
     })
-  }*/
+  }
 }
