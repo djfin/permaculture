@@ -1,1 +1,21 @@
-<p>zone-details works!</p>
+<div *ngIf='zone$ | async as zone'>
+    <h2> Garden Beds</h2>
+    <ul *ngFor="let gardenBed of zone.beds" class="zone">
+    <li >
+        <a routerLink='/users/{{username}}/projects/{{projectName}}/garden/{{zone.name}}/gardenBeds/{{gardenBed.name}}'>
+            <span class="badge">{{gardenBed.id}}</span> {{gardenBed.name}}
+        </a>
+    </li>
+    </ul>
+    <div>
+        <label>Garden Bed Name:
+            <input #gardenBedName />
+        </label><br>
+        <label> Garden Bed Description:
+            <input #gardenBedDescription/>
+        </label>
+        <button id=add-GardenBed (click)='addGardenBed(gardenBedName.value, gardenBedDescription.value);'>
+            add
+        </button>
+    </div>
+</div>

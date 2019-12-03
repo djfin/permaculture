@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Project, User } from '@permaculture/data'
+import { Project, User, GardenBed } from '@permaculture/data'
 
 
 class tester{
@@ -72,5 +72,46 @@ export class AppService {
       }
     })
     return proj;
+  }
+  getZone(username:string,projectName:string, zoneName:string){
+    var us;
+    var zone;
+    this.users.forEach(element=>{
+      var e = element as userWrapper;
+      if(e.user.username==username){
+        us = e.user
+        us.projects.forEach(el=>{
+          if(el.name==projectName){
+            el.garden.forEach(z=>{
+              if(z.name==zoneName){
+                zone=z;
+              }
+            })
+          }
+        })
+      }
+    })
+    return zone;
+  }
+  addGardenBed(username:string, projectName:string, zoneName:string, gardenbed:GardenBed){
+    var us;
+    var zone;
+    this.users.forEach(element=>{
+      var e = element as userWrapper;
+      if(e.user.username==username){
+        us = e.user
+        us.projects.forEach(el=>{
+          if(el.name==projectName){
+            el.garden.forEach(z=>{
+              if(z.name==zoneName){
+                z.beds.push(gardenbed);
+                zone=z;
+              }
+            })
+          }
+        })
+      }
+    })
+    return zone;
   }
 }

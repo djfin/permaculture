@@ -25,7 +25,7 @@ export class ProjectsComponent implements OnInit {
     this.username = this.activatedRoute.snapshot.paramMap.get('user');
     let params = new HttpParams()
     .set('user',this.username)
-    this.user$ = this.http.get<User>('/api/users/',{params})
+    this.user$ = this.http.get<User>('/api/users/user/',{params})
     this.user$.forEach(user=>{
       console.log(user)
     })
