@@ -50,9 +50,9 @@ export class AppService {
   addProject(username:string, project:Project){
     var u;
     this.users.forEach(element=>{
-      var e = element as userWrapper;
-      if(e.user.username==username){
-        u = e.user
+      //var e = element as userWrapper;
+      if(element.username==username){
+        u = element;
       }
     })
     return u.projects.push(project);

@@ -13,17 +13,15 @@ describe('AppService', () => {
 
     service = app.get<AppService>(AppService);
   });
-
-  describe('getData', () => {
-  });
-  let appService = new AppService();
+  
+  service =new AppService();
   let user = new User('test','test','test','test','test');
-  appService.addUser(user);
-  console.log(appService.users);
+  service.addUser(user);
+  console.log(service.users);
   let project = new Project('test','test');
-  appService.addProject('test',project);
+  service.addProject('test',project);
   let gardenBed = new GardenBed('test','testbed');
-  let zone = appService.addGardenBed('test','test','Zone 1',gardenBed);
+  let zone = service.addGardenBed('test','test','Zone 1',gardenBed);
   let zone1 = new Zone("Zone 1", "The zone closest to home");
   zone1.beds.push(gardenBed);
   describe('addGardenBed', ()=>{
