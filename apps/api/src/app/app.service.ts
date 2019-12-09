@@ -61,9 +61,9 @@ export class AppService {
     var us;
     var proj;
     this.users.forEach(element=>{
-      var e = element as userWrapper;
-      if(e.user.username==username){
-        us = e.user
+      //var e = element as userWrapper;
+      if(element.username==username){
+        us = element;
         us.projects.forEach(el=>{
           if(el.name==projectName){
             proj=el;
