@@ -34,7 +34,7 @@ export class AppService {
     return user;
   }
   addUser(user:User){
-    this.users.push(user);
+    return this.users.push(user);
   }
 
   getUserData(username:string) {
@@ -50,9 +50,9 @@ export class AppService {
   addProject(username:string, project:Project){
     var u;
     this.users.forEach(element=>{
-      //var e = element as userWrapper;
-      if(element.username==username){
-        u = element;
+      var e = element as userWrapper;
+      if(e.user.username==username){
+        u = e.user;
       }
     })
     return u.projects.push(project);
@@ -61,9 +61,9 @@ export class AppService {
     var us;
     var proj;
     this.users.forEach(element=>{
-      //var e = element as userWrapper;
-      if(element.username==username){
-        us = element;
+      var e = element as userWrapper;
+      if(e.user.username==username){
+        us = e.user;
         us.projects.forEach(el=>{
           if(el.name==projectName){
             proj=el;
