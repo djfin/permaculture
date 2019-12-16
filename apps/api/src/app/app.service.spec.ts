@@ -13,18 +13,4 @@ describe('AppService', () => {
 
     service = app.get<AppService>(AppService);
   });
-  let user:User;
-  describe('addUser',()=>{
-    it('should add a user',()=>{
-      user = new User('testUser','testPass','testEM','testFN','testLN');
-      const success = service.addUser(user);
-      expect(success).toEqual(1);
-    })
-  })
-  describe('login User',()=>{
-    it('should login a user',()=>{
-      let success = service.login('testUser','testPass');
-      expect(success).toEqual(user);
-    })
-  })
 });

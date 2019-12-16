@@ -25,7 +25,9 @@
               "apps/permaculture-planner/src/favicon.ico",
               "apps/permaculture-planner/src/assets"
             ],
-            "styles": ["apps/permaculture-planner/src/styles.scss"],
+            "styles": [
+              "apps/permaculture-planner/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -85,7 +87,10 @@
               "apps/permaculture-planner/tsconfig.app.json",
               "apps/permaculture-planner/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/permaculture-planner/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/permaculture-planner/**"
+            ]
           }
         },
         "test": {
@@ -119,7 +124,9 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/permaculture-planner-e2e/tsconfig.e2e.json"],
+            "tsConfig": [
+              "apps/permaculture-planner-e2e/tsconfig.e2e.json"
+            ],
             "exclude": [
               "**/node_modules/**",
               "!apps/permaculture-planner-e2e/**"
@@ -141,7 +148,9 @@
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": ["apps/api/src/assets"]
+            "assets": [
+              "apps/api/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -170,7 +179,10 @@
               "apps/api/tsconfig.app.json",
               "apps/api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/api/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/api/**"
+            ]
           }
         },
         "test": {
@@ -195,7 +207,10 @@
               "libs/data/tsconfig.lib.json",
               "libs/data/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/data/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/data/**"
+            ]
           }
         },
         "test": {
@@ -220,7 +235,10 @@
               "libs/ui/tsconfig.lib.json",
               "libs/ui/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/ui/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ui/**"
+            ]
           }
         },
         "test": {
@@ -235,6 +253,65 @@
       "schematics": {
         "@nrwl/angular:component": {
           "styleext": "scss"
+        }
+      }
+    },
+    "test-nest": {
+      "root": "apps/test-nest",
+      "sourceRoot": "apps/test-nest/src",
+      "projectType": "application",
+      "prefix": "test-nest",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/test-nest",
+            "main": "apps/test-nest/src/main.ts",
+            "tsConfig": "apps/test-nest/tsconfig.app.json",
+            "assets": [
+              "apps/test-nest/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/test-nest/src/environments/environment.ts",
+                  "with": "apps/test-nest/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "test-nest:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/test-nest/tsconfig.app.json",
+              "apps/test-nest/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/test-nest/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/test-nest/jest.config.js",
+            "tsConfig": "apps/test-nest/tsconfig.spec.json"
+          }
         }
       }
     }

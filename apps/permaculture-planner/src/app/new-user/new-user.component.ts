@@ -15,15 +15,11 @@ export class NewUserComponent implements OnInit {
   ngOnInit() {
   }
 
-  addUser(username:string, password:string, email:string, firstName:string, lastName:string){
+  addUser(username:String, password:String, email:String, firstName:String, lastName:String){
     var user = new User(username, password, email, firstName, lastName);
     var dummyProj = new Project("dummyProj","dummy");
-    var dummyZone= new Zone("dumyZone", "dummy");
-    var dummyPrinciple = new Principle("Dummy principle", "dummy");
-    dummyProj.garden.push(dummyZone);
-    dummyProj.eduCourse.push(dummyPrinciple);
     user.projects.push(dummyProj);
-    var rep = this.http.post('/api/addUser/',{user});
+    var rep = this.http.post('/api/users/add',user);
     rep.forEach(element =>{
       console.log(element)
     });

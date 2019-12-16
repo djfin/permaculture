@@ -13,7 +13,7 @@
 <div *ngIf="user$ | async as user">
 <ul *ngFor="let project of user.projects" class="project">
   <li >
-    <a routerLink='/users/{{user.username}}/projects/{{project.name}}'>
+    <a routerLink='/users/{{user._id}}/projects/{{project.name}}'>
       <span class="badge">{{project.id}}</span> {{project.name}}
     </a>
   </li>

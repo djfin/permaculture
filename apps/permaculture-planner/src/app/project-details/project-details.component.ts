@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./project-details.component.scss']
 })
 export class ProjectDetailsComponent implements OnInit {
-  @Input() username:string;
+  @Input() userId:string;
   @Input() projectName:string;
   private project$: Observable<Project>;
   zones:Array<Zone> = new Array();
@@ -23,12 +23,10 @@ export class ProjectDetailsComponent implements OnInit {
   }
 
   fetch(){
-    this.username = this.activatedRoute.snapshot.paramMap.get('user');
+    this.userId = this.activatedRoute.snapshot.paramMap.get('user');
     this.projectName=this.activatedRoute.snapshot.paramMap.get('project');
-    let params = new HttpParams()
-    .set('user',this.username)
-    .set('project',this.projectName)
-    this.project$ = this.http.get<Project>('/api/getProject/',{params})
+    let reqString = 'api/users/'+this.userId+'/projects/'+this.projectName;
+    this.project$ = this.http.get<Project>(reqString)
     this.project$.forEach(element=>{
       console.log(element);
     })

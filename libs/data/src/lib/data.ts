@@ -2,20 +2,20 @@ import { deepEqual } from 'assert';
 import { ThrowStmt } from '@angular/compiler';
 
 export class ToDo{
-    name: string;
-    dueDate:Date;
-    complete:boolean;
-    description:string;
+    readonly name: string;
+    readonly dueDate:Date;
+    readonly complete:boolean;
+    readonly description:string;
 }
 export class Crop{
-    name:string;
-    description:string;
-    todos:Array<ToDo>;
+    readonly name:string;
+    readonly description:string;
+    readonly todos:Array<ToDo>;
 }
 export class GardenBed{
-    name:string;
-    description:string;
-    crops: Array<Crop>
+    readonly name:string;
+    readonly description:string;
+    readonly crops: Array<Crop>
 
     constructor(name:string, description:string){
         this.name =name;
@@ -24,9 +24,9 @@ export class GardenBed{
     }
 }
 export class Zone{
-    name:string;
-    description:string;
-    beds:Array<GardenBed>
+    readonly name:string;
+    readonly description:string;
+    readonly beds:Array<GardenBed>
 
     constructor(name:string, description:string){
         this.name=name;
@@ -35,14 +35,14 @@ export class Zone{
     }
 }
 export class Activity{
-    prompt: string;
-    response:string;
-    complete:boolean;
+    readonly prompt: string;
+    readonly response:string;
+    readonly complete:boolean;
 }
 export class Principle{
-    name:string;
-    description:string;
-    activities: Array<Activity>
+    readonly name:string;
+    readonly description:string;
+    readonly activities: Array<Activity>
 
     constructor(name:string, description:string){
         this.name=name;
@@ -52,10 +52,10 @@ export class Principle{
 }
 
 export class Project {
-    name: string;
-    description:string;
-    eduCourse: Array<Principle>;
-    garden: Array<Zone>;
+    readonly name: string;
+    readonly description:string;
+    readonly eduCourse: Array<Principle>;
+    readonly garden: Array<Zone>;
 
     constructor(name:string, description:string){
         this.name =name;
@@ -83,14 +83,15 @@ export class Project {
     }
   }
   export class User {
-      username:string;
-      password:string;
-      email:string;
-      firstName:string;
-      lastName:string;
-      projects: Array<Project>;
+      //readonly _id:String;
+      readonly username:String;
+      readonly password:String;
+      readonly email:String;
+      readonly firstName:String;
+      readonly lastName:String;
+      readonly projects: Array<Project>;
 
-      constructor(username:string, password:string, email:string, firstName:string, lastName:string){
+      constructor(username:String, password:String, email:String, firstName:String, lastName:String){
           this.username=username;
           this.password=password;
           this.email=email;

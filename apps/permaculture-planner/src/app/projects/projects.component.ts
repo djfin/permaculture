@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
-  @Input() username:string;
+  @Input() userID:string;
   private user$:Observable<User>;
   projects: Project[] = [];
 
@@ -21,21 +21,21 @@ export class ProjectsComponent implements OnInit {
   }
 
   fetch() {
-    //console.log(this.activatedRoute.snapshot.paramMap.get('user'));
-    this.username = this.activatedRoute.snapshot.paramMap.get('user');
-    let params = new HttpParams()
-    .set('user',this.username)
-    this.user$ = this.http.get<User>('/api/users/user/',{params})
+    this.userID = this.activatedRoute.snapshot.paramMap.get('user');
+    let reqString = 'api/users/'+this.userID;
+    this.user$ = this.http.get<User>(reqString);
     this.user$.forEach(user=>{
       console.log(user)
+      this.projects = user.projects;
     })
-    /*const test = this.activatedRoute.snapshot.paramMap.get('user')
-    console.log(test);*/
   }
   addProject(name:string, description:string) {
-    var project =new Project(name,description);
-    const user=this.username
-    this.http.post('api/addProject/', {user,project},).subscribe(() => {
+    let newProject =new Project(name,description);
+    this.projects.push(newProject);
+    const projects = this.projects;
+    let reqString = 'api/users/'+this.userID+'/projects/add';
+    this.http.put(reqString, projects)
+    .subscribe(() => {
       this.fetch();
     });
   }
