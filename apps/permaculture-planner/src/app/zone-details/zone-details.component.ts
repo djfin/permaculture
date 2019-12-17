@@ -10,7 +10,7 @@ import { Zone, GardenBed } from '@permaculture/data';
   styleUrls: ['./zone-details.component.scss']
 })
 export class ZoneDetailsComponent implements OnInit {
-  @Input() username:string;
+  @Input() userId:string;
   @Input() projectName:string;
   @Input() zoneName:string;
   zone$:Observable<Zone>;
@@ -22,26 +22,23 @@ export class ZoneDetailsComponent implements OnInit {
   }
 
   fetch(){
-    this.username = this.activatedRoute.snapshot.paramMap.get('user');
+    this.userId = this.activatedRoute.snapshot.paramMap.get('user');
     this.projectName=this.activatedRoute.snapshot.paramMap.get('project');
     this.zoneName=this.activatedRoute.snapshot.paramMap.get('zone');
-    let params = new HttpParams()
-    .set('user',this.username)
-    .set('project',this.projectName)
-    .set('zone',this.zoneName)
-    this.zone$ = this.http.get<Zone>('/api/getZone',{params});
+    let reqString = 'api/users/'+this.userId+'/projects/'+this.projectName+'/garden/'+this.zoneName;
+    this.zone$ = this.http.get<Zone>(reqString);
     this.zone$.forEach(element=>{
       console.log(element)
     })
   }
-  addGardenBed(bedName:string, bedDesc:string){
-    const user = this.username;
-    const project = this.projectName;
-    const zone = this.zoneName;
-    const bed = new GardenBed(bedName, bedDesc);
-    this.http.post('/api/addGardenBed/',{user, project, zone, bed}).subscribe(()=>{
-      this.fetch;
-    });
-  }
+  // addGardenBed(bedName:string, bedDesc:string){
+  //   const user = this.username;
+  //   const project = this.projectName;
+  //   const zone = this.zoneName;
+  //   const bed = new GardenBed(bedName, bedDesc);
+  //   this.http.post('/api/addGardenBed/',{user, project, zone, bed}).subscribe(()=>{
+  //     this.fetch;
+  //   });
+  // }
 
 }

@@ -3,6 +3,7 @@ import { Project, User } from '@permaculture/data';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { timingSafeEqual } from 'crypto';
 
 @Component({
   selector: 'permaculture-projects',
@@ -38,5 +39,10 @@ export class ProjectsComponent implements OnInit {
     .subscribe(() => {
       this.fetch();
     });
+  }
+  deleteProject(name:String){
+    const projects = this.projects.filter(proj=>!(proj.name==name));
+    let reqString = 'api/users/'+this.userID+'/projects/delete/';
+    this.http.put(reqString,projects).subscribe(()=>this.fetch())
   }
 }

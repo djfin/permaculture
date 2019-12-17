@@ -30,10 +30,23 @@ export class AppController {
 
   @Put('users/:userId/projects/add/')
   async addProject(@Param('userId') userId, @Body() projects){
-    return this.appService.addProject(userId,projects);
+    return this.appService.updateProjectArray(userId,projects);
   }
   @Get('users/:userId/projects/:projectId')
   async getProject(@Param('userId') userId, @Param('projectId') projectId){
     return this.appService.getProject(userId,projectId);
+  }
+  @Put('users/:userId/projects/delete/')
+  async deleteProject(@Param('userId') userId, @Body() projects){
+    return this.appService.updateProjectArray(userId,projects);
+  }
+
+  @Get('users/:userId/projects/:projName/garden/:zoneId')
+  async getZone(@Param('userId') userId,@Param('projName') projName, @Param('zoneId') zoneId){
+    return this.appService.getZone(userId,projName,zoneId);
+  }
+  @Get('users/:userId/projects/:projName/eduCourse/:principleName')
+  async getPrinciple(@Param('userId') userId,@Param('projName') projName, @Param('principleName') principleName){
+    return this.appService.getPrinciple(userId,projName,principleName);
   }
 }

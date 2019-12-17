@@ -24,11 +24,13 @@ export class GardenBed{
     }
 }
 export class Zone{
+    readonly id:number;
     readonly name:string;
     readonly description:string;
     readonly beds:Array<GardenBed>
 
-    constructor(name:string, description:string){
+    constructor(id:number,name:string, description:string){
+        this.id=id;
         this.name=name;
         this.description=description;
         this.beds=new Array();
@@ -61,11 +63,11 @@ export class Project {
         this.name =name;
         this.description=description;
         this.garden = new Array<Zone>();
-        this.garden.push(new Zone("Zone 1", "The zone closest to home"));
-        this.garden.push(new Zone("Zone 2", "The next zone"));
-        this.garden.push(new Zone("Zone 3", "The next one"));
-        this.garden.push(new Zone("Zone 4", "Another one "));
-        this.garden.push(new Zone("Zone 5", "Yes"));
+        this.garden.push(new Zone(1,"Zone 1", "The zone closest to home"));
+        this.garden.push(new Zone(2,"Zone 2", "The next zone"));
+        this.garden.push(new Zone(3,"Zone 3", "The next one"));
+        this.garden.push(new Zone(4,"Zone 4", "Another one "));
+        this.garden.push(new Zone(5,"Zone 5", "Yes"));
 
         this.eduCourse = new Array<Principle>();
         this.eduCourse.push(new Principle("Observe and Interact","Observe"));

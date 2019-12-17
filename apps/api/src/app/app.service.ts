@@ -35,18 +35,28 @@ export class AppService {
       return this.userModel.findByIdAndDelete(userId);
   }
 
-  async addProject(userId:String,projs:Array<Project>){
+  async updateProjectArray(userId:String,projs:Array<Project>){
       return this.userModel.findByIdAndUpdate(userId,{ projects: projs}).update();
   }
 
   async getProject(userId:String,projId:String){
-    let user = await this.userModel.findById(userId);
-    let project;
-    await user.projects.forEach(proj=>{
-      if(proj.name==projId){
-        project= proj;
-      }
-    })
+    const user = await this.userModel.findById(userId);
+    const project = user.projects.find(proj=>proj.name==projId);
     return await project;
+  }
+
+  async getZone(userId:String, projName:String,zoneId:String){
+    const user = await this.userModel.findById(userId);
+    const project = user.projects.find(proj=>proj.name==projName);
+    const zoneID = new Number(zoneId).valueOf();
+    const zone = project.garden[zoneID-1];
+    return await zone;
+  }
+
+  async getPrinciple(userId:String,projName:String,principleName){
+    const user = await this.userModel.findById(userId);
+    const project = user.projects.find(proj=>proj.name==projName);
+    const principle = project.eduCourse.find(prin=>prin.name==principleName);
+    return await principle;
   }
 }

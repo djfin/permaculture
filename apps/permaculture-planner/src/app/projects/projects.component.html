@@ -16,6 +16,7 @@
     <a routerLink='/users/{{user._id}}/projects/{{project.name}}'>
       <span class="badge">{{project.id}}</span> {{project.name}}
     </a>
+    <button (click)="deleteProject(project.name)">Delete</button>
   </li>
 </ul>
 </div>

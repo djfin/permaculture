@@ -1,1 +1,10 @@
-<p>principle-details works!</p>
+<div *ngIf='principle$ | async as principle'>
+    <h2> Activities</h2>
+    <ul *ngFor="let activity of principle.activities" class="principle">
+    <li >
+        <a routerLink='/users/{{username}}/projects/{{projectName}}/eduCourse/{{principle.name}}/activities/{{activity.name}}'>
+            <span class="badge">{{activity.id}}</span> {{activity.name}}
+        </a>
+    </li>
+    </ul>
+</div>

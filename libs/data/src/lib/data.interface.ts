@@ -17,6 +17,7 @@ export interface GardenBedInt extends Document{
     readonly crops: Array<CropInt>
 }
 export interface ZoneInt extends Document{
+    readonly id:number,
     readonly name:string;
     readonly description:string;
     readonly beds:Array<GardenBedInt>
