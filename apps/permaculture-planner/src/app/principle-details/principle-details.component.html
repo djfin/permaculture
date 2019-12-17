@@ -2,7 +2,7 @@
     <h2> Activities</h2>
     <ul *ngFor="let activity of principle.activities" class="principle">
     <li >
-        <a routerLink='/users/{{userId}}/projects/{{projectName}}/eduCourse/{{principle.name}}/activities/{{activity.id}}'>
+        <a routerLink='/users/{{userId}}/projects/{{projectId}}/eduCourse/{{principle.id}}/activities/{{activity.id}}'>
             {{activity.name}}
         </a>
     </li>

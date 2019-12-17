@@ -12,8 +12,8 @@ import { HttpClient } from '@angular/common/http';
 export class PrincipleDetailsComponent implements OnInit {
 
   @Input() userId:string;
-  @Input() projectName:string;
-  @Input() principleName:string;
+  @Input() projectId:string;
+  @Input() principleId:string;
   principle$:Observable<Principle>;
 
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private router:Router) { }
@@ -24,9 +24,9 @@ export class PrincipleDetailsComponent implements OnInit {
 
   fetch(){
     this.userId = this.activatedRoute.snapshot.paramMap.get('user');
-    this.projectName=this.activatedRoute.snapshot.paramMap.get('project');
-    this.principleName=this.activatedRoute.snapshot.paramMap.get('principle');
-    let reqString = 'api/users/'+this.userId+'/projects/'+this.projectName+'/eduCourse/'+this.principleName;
+    this.projectId=this.activatedRoute.snapshot.paramMap.get('project');
+    this.principleId=this.activatedRoute.snapshot.paramMap.get('principle');
+    let reqString = 'api/users/'+this.userId+'/projects/'+this.projectId+'/eduCourse/'+this.principleId;
     this.principle$ = this.http.get<Principle>(reqString);
     this.principle$.forEach(element=>{
       console.log(element)

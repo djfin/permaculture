@@ -12,7 +12,7 @@ import { Activity } from '@permaculture/data';
 export class ActivityDetailsComponent implements OnInit {
   @Input() userId:string;
   @Input() projectName:string;
-  @Input() principleName:string;
+  @Input() principleId:string;
   @Input() activityId:string;
   activity$:Observable<Activity>;
 
@@ -25,12 +25,17 @@ export class ActivityDetailsComponent implements OnInit {
   fetch(){
     this.userId = this.activatedRoute.snapshot.paramMap.get('user');
     this.projectName=this.activatedRoute.snapshot.paramMap.get('project');
-    this.principleName=this.activatedRoute.snapshot.paramMap.get('principle');
+    this.principleId=this.activatedRoute.snapshot.paramMap.get('principle');
     this.activityId= this.activatedRoute.snapshot.paramMap.get('activity');
-    let reqString = 'api/users/'+this.userId+'/projects/'+this.projectName+'/eduCourse/'+this.principleName+'/activities/'+this.activityId;
+    let reqString = 'api/users/'+this.userId+'/projects/'+this.projectName+'/eduCourse/'+this.principleId+'/activities/'+this.activityId;
     this.activity$ = this.http.get<Activity>(reqString);
     this.activity$.forEach(element=>{
       console.log(element)
     })
+  }
+
+  udpateAcitivty(response:String, complete:boolean){
+    let reqString = 'api/users/'+this.userId+'/projects/'+this.projectName+'/eduCourse/'+this.principleId+'/activities/'+this.activityId+'/update';
+
   }
  }

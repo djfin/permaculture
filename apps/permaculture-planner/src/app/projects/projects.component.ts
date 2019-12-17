@@ -32,7 +32,8 @@ export class ProjectsComponent implements OnInit {
   }
   addProject(name:string, description:string) {
     let newProject =new Project(name,description);
-    this.projects.push(newProject);
+    const index = this.projects.push(newProject)-1;
+    this.projects[index].id=index;
     const projects = this.projects;
     let reqString = 'api/users/'+this.userID+'/projects/add';
     this.http.put(reqString, projects)

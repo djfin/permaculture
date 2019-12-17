@@ -45,12 +45,12 @@ export class AppController {
   async getZone(@Param('userId') userId,@Param('projName') projName, @Param('zoneId') zoneId){
     return this.appService.getZone(userId,projName,zoneId);
   }
-  @Get('users/:userId/projects/:projName/eduCourse/:principleName')
-  async getPrinciple(@Param('userId') userId,@Param('projName') projName, @Param('principleName') principleName){
-    return this.appService.getPrinciple(userId,projName,principleName);
+  @Get('users/:userId/projects/:projName/eduCourse/:principleId')
+  async getPrinciple(@Param('userId') userId,@Param('projName') projName, @Param('principleId') principleId){
+    return this.appService.getPrinciple(userId,projName,principleId);
   }
-  @Get('users/:userId/projects/:projName/eduCourse/:principleName/activities/:activityId')
-  async getActivity(@Param('userId') userId,@Param('projName') projName, @Param('principleName') principleName, @Param('activityId') activityId){
-    return this.appService.getActivity(userId,projName,principleName,activityId);
+  @Get('users/:userId/projects/:projName/eduCourse/:principleId/activities/:activityId')
+  async getActivity(@Param('userId') userId,@Param('projName') projName, @Param('principleId') principleId, @Param('activityId') activityId){
+    return this.appService.getActivity(userId,projName,principleId,activityId);
   }
 }
