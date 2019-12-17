@@ -2,8 +2,8 @@
     <h2> Activities</h2>
     <ul *ngFor="let activity of principle.activities" class="principle">
     <li >
-        <a routerLink='/users/{{username}}/projects/{{projectName}}/eduCourse/{{principle.name}}/activities/{{activity.name}}'>
-            <span class="badge">{{activity.id}}</span> {{activity.name}}
+        <a routerLink='/users/{{userId}}/projects/{{projectName}}/eduCourse/{{principle.name}}/activities/{{activity.id}}'>
+            {{activity.name}}
         </a>
     </li>
     </ul>

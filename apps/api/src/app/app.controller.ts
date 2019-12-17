@@ -49,4 +49,8 @@ export class AppController {
   async getPrinciple(@Param('userId') userId,@Param('projName') projName, @Param('principleName') principleName){
     return this.appService.getPrinciple(userId,projName,principleName);
   }
+  @Get('users/:userId/projects/:projName/eduCourse/:principleName/activities/:activityId')
+  async getActivity(@Param('userId') userId,@Param('projName') projName, @Param('principleName') principleName, @Param('activityId') activityId){
+    return this.appService.getActivity(userId,projName,principleName,activityId);
+  }
 }

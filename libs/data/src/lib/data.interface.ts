@@ -23,6 +23,7 @@ export interface ZoneInt extends Document{
     readonly beds:Array<GardenBedInt>
 }
 export interface ActivityInt extends Document{
+    readonly id:number;
     readonly prompt: string;
     readonly response:string;
     readonly complete:boolean;

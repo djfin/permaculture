@@ -48,7 +48,7 @@ export class AppService {
   async getZone(userId:String, projName:String,zoneId:String){
     const user = await this.userModel.findById(userId);
     const project = user.projects.find(proj=>proj.name==projName);
-    const zoneID = new Number(zoneId).valueOf();
+    const zoneID = +zoneId;
     const zone = project.garden[zoneID-1];
     return await zone;
   }
@@ -58,5 +58,14 @@ export class AppService {
     const project = user.projects.find(proj=>proj.name==projName);
     const principle = project.eduCourse.find(prin=>prin.name==principleName);
     return await principle;
+  }
+
+  async getActivity(userId:String, projName:String, principleName:String,activityId:String){
+    const user = await this.userModel.findById(userId);
+    const project = user.projects.find(proj=>proj.name==projName);
+    const principle = project.eduCourse.find(prin=>prin.name==principleName);
+    const activityID= +activityId;
+    const activity = principle.activities[activityID];
+    return await activity;
   }
 }
