@@ -2,7 +2,7 @@
     <h2> Garden Beds</h2>
     <ul *ngFor="let gardenBed of zone.beds" class="zone">
     <li >
-        <a routerLink='/users/{{username}}/projects/{{projectName}}/garden/{{zone.name}}/gardenBeds/{{gardenBed.name}}'>
+        <a routerLink='/users/{{username}}/projects/{{projectId}}/garden/{{zone.name}}/gardenBeds/{{gardenBed.name}}'>
             <span class="badge">{{gardenBed.id}}</span> {{gardenBed.name}}
         </a>
     </li>

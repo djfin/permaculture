@@ -25,8 +25,8 @@ export interface ZoneInt extends Document{
 export interface ActivityInt extends Document{
     readonly id:number;
     readonly prompt: string;
-    readonly response:string;
-    readonly complete:boolean;
+    response:string;
+    complete:boolean;
 }
 export interface PrincipleInt extends Document{
     readonly name:string;

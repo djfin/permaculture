@@ -11,7 +11,7 @@ import { Zone, GardenBed } from '@permaculture/data';
 })
 export class ZoneDetailsComponent implements OnInit {
   @Input() userId:string;
-  @Input() projectName:string;
+  @Input() projectId:string;
   @Input() zoneName:string;
   zone$:Observable<Zone>;
 
@@ -23,9 +23,9 @@ export class ZoneDetailsComponent implements OnInit {
 
   fetch(){
     this.userId = this.activatedRoute.snapshot.paramMap.get('user');
-    this.projectName=this.activatedRoute.snapshot.paramMap.get('project');
+    this.projectId=this.activatedRoute.snapshot.paramMap.get('project');
     this.zoneName=this.activatedRoute.snapshot.paramMap.get('zone');
-    let reqString = 'api/users/'+this.userId+'/projects/'+this.projectName+'/garden/'+this.zoneName;
+    let reqString = 'api/users/'+this.userId+'/projects/'+this.projectId+'/garden/'+this.zoneName;
     this.zone$ = this.http.get<Zone>(reqString);
     this.zone$.forEach(element=>{
       console.log(element)

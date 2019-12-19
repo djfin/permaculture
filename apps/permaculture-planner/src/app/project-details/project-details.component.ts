@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class ProjectDetailsComponent implements OnInit {
   @Input() userId:string;
-  @Input() projectName:string;
+  @Input() projectId:string;
   private project$: Observable<Project>;
   zones:Array<Zone> = new Array();
   principles:Array<Principle>= new Array();
@@ -24,8 +24,8 @@ export class ProjectDetailsComponent implements OnInit {
 
   fetch(){
     this.userId = this.activatedRoute.snapshot.paramMap.get('user');
-    this.projectName=this.activatedRoute.snapshot.paramMap.get('project');
-    let reqString = 'api/users/'+this.userId+'/projects/'+this.projectName;
+    this.projectId=this.activatedRoute.snapshot.paramMap.get('project');
+    let reqString = 'api/users/'+this.userId+'/projects/'+this.projectId;
     this.project$ = this.http.get<Project>(reqString)
     this.project$.forEach(element=>{
       console.log(element);

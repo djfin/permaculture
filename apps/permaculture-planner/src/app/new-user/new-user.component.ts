@@ -17,8 +17,6 @@ export class NewUserComponent implements OnInit {
 
   addUser(username:String, password:String, email:String, firstName:String, lastName:String){
     var user = new User(username, password, email, firstName, lastName);
-    var dummyProj = new Project("dummyProj","dummy");
-    user.projects.push(dummyProj);
     var rep = this.http.post('/api/users/add',user);
     rep.forEach(element =>{
       console.log(element)
