@@ -1,6 +1,6 @@
 <div *ngIf='principle$ | async as principle'>
     <h2> Activities</h2>
-    <ul *ngFor="let activity of principle.activities" class="principle">
+    <ul *ngFor="let activity of principle.activities">
     <li >
         <a routerLink='/users/{{userId}}/projects/{{projectId}}/eduCourse/{{principle.id}}/activities/{{activity.id}}'>
             {{activity.name}}

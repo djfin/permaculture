@@ -1,5 +1,5 @@
 <h1>Projects</h1>
-<div>
+<div class =forn-group>
   <label>Project name:
         <input #projectName />
   </label><br>
@@ -10,11 +10,11 @@
       add
   </button>
 </div>
-<div *ngIf="user$ | async as user">
+<div *ngIf="user$ | async as user" class=table>
 <ul *ngFor="let project of user.projects" class="project">
   <li >
     <a routerLink='/users/{{user._id}}/projects/{{project.id}}'>
-      <span class="badge">{{project.id}}</span> {{project.name}}
+      <span class="badge"></span> {{project.name}}
     </a>
     <button (click)="deleteProject(project.name)">Delete</button>
   </li>
