@@ -83,7 +83,7 @@ export class AppService {
     const principle = project.eduCourse[principleID];
     const activityID= +activityId;
     const currentAct = principle.activities[activityID];
-    const newAct = {...currentAct, response:activityIn.response, complete:activityIn.complete};
+    const newAct = {...currentAct, response: activityIn.response, complete: activityIn.complete};
     return await newAct;
     
   }
