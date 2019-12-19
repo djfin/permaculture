@@ -1,5 +1,5 @@
 <div *ngIf='activity$ | async as activity'>
-    <h1>{{principleName}}</h1>
+    <h1>{{activity.name}}:</h1>
     <h3>Prompt: <br>{{activity.prompt}}</h3>
     <h5>Response:</h5>
     <textarea #response rows=5 cols=50></textarea> <br>

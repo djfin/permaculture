@@ -15,7 +15,6 @@ export class ActivityDetailsComponent implements OnInit {
   @Input() principleId:string;
   @Input() activityId:string;
   activity$:Observable<Activity>;
-  principleName:string;
 
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private router:Router) { }
 
@@ -27,11 +26,6 @@ export class ActivityDetailsComponent implements OnInit {
     this.userId = this.activatedRoute.snapshot.paramMap.get('user');
     this.projectName=this.activatedRoute.snapshot.paramMap.get('project');
     this.principleId=this.activatedRoute.snapshot.paramMap.get('principle');
-    let principleReqString = 'api/users/'+this.userId+'/projects/'+this.projectName+'/eduCourse/'+this.principleId;
-    const principle$ = this.http.get<Principle>(principleReqString);
-    principle$.subscribe(el=>{
-      this.principleName = el.name;
-    })
     this.activityId= this.activatedRoute.snapshot.paramMap.get('activity');
     let reqString = 'api/users/'+this.userId+'/projects/'+this.projectName+'/eduCourse/'+this.principleId+'/activities/'+this.activityId;
     this.activity$ = this.http.get<Activity>(reqString);
