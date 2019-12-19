@@ -1,5 +1,7 @@
 <div *ngIf='zone$ | async as zone'>
-    <h2> Garden Beds</h2>
+    <h1>{{zone.name}}:</h1>
+    <h3>{{zone.description}}</h3>
+    <h5> Garden Beds</h5>
     <ul *ngFor="let gardenBed of zone.beds" class="zone">
     <li >
         <a routerLink='/users/{{username}}/projects/{{projectId}}/garden/{{zone.name}}/gardenBeds/{{gardenBed.name}}'>
@@ -8,10 +10,10 @@
     </li>
     </ul>
     <div>
-        <label>Garden Bed Name:
+        <label>Garden Bed Name: <br>
             <input #gardenBedName />
         </label><br>
-        <label> Garden Bed Description:
+        <label> Garden Bed Description: <br>
             <input #gardenBedDescription/>
         </label>
         <button id=add-GardenBed (click)='addGardenBed(gardenBedName.value, gardenBedDescription.value);'>

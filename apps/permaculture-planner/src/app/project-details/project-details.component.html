@@ -1,5 +1,7 @@
 <div *ngIf='project$ | async as project'>
-  <h2> Zones:</h2>
+  <h1>{{project.name}}:</h1>
+  <h3>{{project.description}}</h3>
+  <h5> Zones:</h5>
 <ul *ngFor="let zone of project.garden" class="zone">
   <li >
     <a routerLink='/users/{{userId}}/projects/{{project.id}}/garden/{{zone.id}}'>
@@ -7,7 +9,7 @@
     </a>
   </li>
 </ul>
-<h2>Principles</h2>
+<h5>Principles</h5>
 <ul *ngFor="let principle of project.eduCourse" class="principle">
         <li >
           <a routerLink='/users/{{userId}}/projects/{{project.id}}/eduCourse/{{principle.id}}'>

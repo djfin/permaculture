@@ -75,11 +75,11 @@ export class Project {
         this.name =name;
         this.description=description;
         this.garden = new Array<Zone>();
-        this.garden.push(new Zone(1,"Zone 1", "The zone closest to home"));
-        this.garden.push(new Zone(2,"Zone 2", "The next zone"));
-        this.garden.push(new Zone(3,"Zone 3", "The next one"));
-        this.garden.push(new Zone(4,"Zone 4", "Another one "));
-        this.garden.push(new Zone(5,"Zone 5", "Yes"));
+        this.garden.push(new Zone(1,"Zone 1", "This is the area closest to the center of actvity. Plant the crops that need the most attention here."));
+        this.garden.push(new Zone(2,"Zone 2", "This is the area just beyond Zone 1. These crops are still intensely cultivated and are often annuals."));
+        this.garden.push(new Zone(3,"Zone 3", "This area acts as a windbreak for more sensitive crops. Hardy trees, shrubs, and animals are good here."));
+        this.garden.push(new Zone(4,"Zone 4", "This area is for long term development. Plant timber trees andother crops that require minimal attention here"));
+        this.garden.push(new Zone(5,"Zone 5", "Uncultivated transitional area"));
 
         this.eduCourse = new Array<Principle>();
         //Principle 1
