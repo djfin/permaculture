@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { UserInt, ProjectInt } from 'libs/data/src/lib/data.interface';
-import { User, Project } from 'libs/data/src/lib/data';
+import { UserInt, ProjectInt, ActivityInt } from 'libs/data/src/lib/data.interface';
+import { User, Project, Activity } from 'libs/data/src/lib/data';
 
 
 
@@ -73,5 +73,18 @@ export class AppService {
     const activityID= +activityId;
     const activity = principle.activities[activityID];
     return await activity;
+  }
+
+  async updateActivity(userId:String, projId:String, principleId:String,activityId:String, activityIn:Activity){
+    const user = await this.userModel.findById(userId);
+    const projectID = +projId;
+    const project = user.projects[projectID];
+    const principleID = +principleId;
+    const principle = project.eduCourse[principleID];
+    const activityID= +activityId;
+    const currentAct = principle.activities[activityID];
+    const newAct = {...currentAct, response:activityIn.response, complete:activityIn.complete};
+    return await newAct;
+    
   }
 }

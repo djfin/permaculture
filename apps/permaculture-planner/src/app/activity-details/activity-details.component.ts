@@ -33,9 +33,14 @@ export class ActivityDetailsComponent implements OnInit {
       console.log(element)
     })
   }
-
-  udpateAcitivty(response:String, complete:boolean){
+  updateActivity(activityIn:Activity,response:string,complete:boolean){
+    activityIn.response=response;
+    activityIn.complete=complete;
+    console.log(activityIn);
     let reqString = 'api/users/'+this.userId+'/projects/'+this.projectName+'/eduCourse/'+this.principleId+'/activities/'+this.activityId+'/update';
-
+    this.http.put<Activity>(reqString,activityIn).subscribe(()=>{
+      this.fetch()
+    });
   }
+
  }

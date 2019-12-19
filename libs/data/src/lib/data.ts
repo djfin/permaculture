@@ -39,8 +39,8 @@ export class Activity{
     readonly id:number;
     readonly name:string;
     readonly prompt: string;
-    readonly response:string;
-    readonly complete:boolean;
+    response:string;
+    complete:boolean;
     
     constructor(id:number,name:string,prompt:string){
         this.id=id;

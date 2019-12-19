@@ -53,4 +53,8 @@ export class AppController {
   async getActivity(@Param('userId') userId,@Param('projName') projName, @Param('principleId') principleId, @Param('activityId') activityId){
     return this.appService.getActivity(userId,projName,principleId,activityId);
   }
+  @Put('users/:userId/projects/:projName/eduCourse/:principleId/activities/:activityId/update')
+  async updateActivity(@Param('userId') userId,@Param('projName') projName, @Param('principleId') principleId, @Param('activityId') activityId, @Body() activityIn){
+    return this.appService.updateActivity(userId,projName,principleId,activityId,activityIn)
+  }
 }

@@ -3,4 +3,6 @@
     <h3>Prompt: {{activity.prompt}}</h3>
     <h5>Response:</h5>
     <textarea #response rows=5 cols=50></textarea> 
+    <button (click)='updateActivity(activity,response.value,false)'>Save Draft</button>
+    <button (click)='updateActivity(activity,response.value,true)'>Submit</button>
 </div>
