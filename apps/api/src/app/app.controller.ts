@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Param, Query, UseGuards, Req, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Query, UseGuards, Req, Put, HttpException, HttpStatus } from '@nestjs/common';
 import { Project, User, GardenBed } from '@permaculture/data';
 import { AppService } from './app.service';
 
@@ -12,7 +12,6 @@ export class AppController {
   }
   @Post('users/add')
   async addUser(@Body() user:User){
-    console.log('USER HERE::::::', user);
     return await this.appService.createUser(user);
   }
   @Get('login/')
@@ -29,7 +28,7 @@ export class AppController {
   }
 
   @Put('users/:userId/projects/add/')
-  async addProject(@Param('userId') userId, @Body() projects){
+  async addProject(@Param('userId') userId, @Body() projects,){
     return this.appService.updateProjectArray(userId,projects);
   }
   @Get('users/:userId/projects/:projectId')
@@ -54,7 +53,7 @@ export class AppController {
     return this.appService.getActivity(userId,projName,principleId,activityId);
   }
   @Put('users/:userId/projects/:projName/eduCourse/:principleId/activities/:activityId/update')
-  async updateActivity(@Param('userId') userId,@Param('projName') projName, @Param('principleId') principleId, @Param('activityId') activityId, @Body() activityIn){
+  async updateActivity(@Param('userId') userId,@Param('projName') projName, @Param('principleId') principleId, @Param('activityId') activityId, @Body() activityIn, ){
     return this.appService.updateActivity(userId,projName,principleId,activityId,activityIn)
   }
 }

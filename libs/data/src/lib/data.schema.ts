@@ -54,11 +54,32 @@ export const ProjectSchema = new mongoose.Schema(
 )
 export const UserSchema = new mongoose.Schema(
     {
-        username:String,
-        password:String,
-        email:String,
-        firstName:String,
-        lastName:String,
+        username:{
+            type:String,
+            required: [true,'Must provide a username']
+
+        } ,
+        password:{
+            type:String,
+            required: [true,'Must provide a password']
+        },
+        email:{
+            type:String,
+            validate: {
+                validator: (v:string)=>{
+                    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v)
+                },
+            },
+            required: [true,'Must provide a valid email']
+        },
+        firstName:{
+            type:String,
+            required: true
+        },
+        lastName:{
+            type: String,
+            required: true
+        },
         projects: Array
     }
 )

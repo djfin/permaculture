@@ -84,7 +84,8 @@ export class AppService {
     const activityID= +activityId;
     const currentAct : ActivityInt = principle.activities[activityID];
     const newAct = {...currentAct, response: activityIn.response, complete: activityIn.complete};
-    return await newAct;
+    user.projects[projectID].eduCourse[principleID].activities[activityID]=newAct;
+    return this.userModel.findByIdAndUpdate(userId,{projects: user.projects})
     
   }
 }
