@@ -2,7 +2,7 @@
     <h1>{{principleName}}</h1>
     <h3>Prompt: <br>{{activity.prompt}}</h3>
     <h5>Response:</h5>
-    <textarea #response rows=5 cols=50></textarea> <br>
+    <textarea #response rows=5 cols=50>{{activity.response}}</textarea> <br>
     <button (click)='updateActivity(activity,response.value,false)'>Save Draft</button>
     <button (click)='updateActivity(activity,response.value,true)'>Submit</button>
 </div>
