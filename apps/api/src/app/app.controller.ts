@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Body, Param, Query, UseGuards, Req, Put, HttpException, HttpStatus } from '@nestjs/common';
 import { Project, User, GardenBed } from '@permaculture/data';
 import { AppService } from './app.service';
+import { GardenBedInt } from 'libs/data/src/lib/data.interface';
 
 @Controller()
 export class AppController {
@@ -56,4 +57,8 @@ export class AppController {
   async updateActivity(@Param('userId') userId,@Param('projName') projName, @Param('principleId') principleId, @Param('activityId') activityId, @Body() activityIn, ){
     return this.appService.updateActivity(userId,projName,principleId,activityId,activityIn)
   }
+  @Put('users/:userId/projects/:projName/garden/:zoneId/addGB/')
+    async addGardenBed(@Param('userId') userId,@Param('projName') projName, @Param('zoneId') zoneId, @Body() newBed:GardenBedInt){
+      return this.appService.createGardenBed(userId,projName,zoneId,newBed)
+    }
 }

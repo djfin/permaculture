@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { UserInt, ProjectInt, ActivityInt } from 'libs/data/src/lib/data.interface';
-import { User, Project, Activity } from 'libs/data/src/lib/data';
+import { UserInt, ProjectInt, ActivityInt, GardenBedInt } from 'libs/data/src/lib/data.interface';
+import { User, Project, Activity, GardenBed } from 'libs/data/src/lib/data';
 
 
 
@@ -53,6 +53,17 @@ export class AppService {
     const zoneID = +zoneId;
     const zone = project.garden[zoneID-1];
     return await zone;
+  }
+
+  async createGardenBed(userId: String, projId: String, zoneId:String, newBed: GardenBedInt){
+    const user = await this.userModel.findById(userId);
+    const projectID = +projId;
+    const project = user.projects[projectID];
+    const zoneID = +zoneId;
+    const zone = project.garden[zoneID-1];
+    zone.beds.push(newBed)
+    const projs = user.projects;
+    return this.userModel.findByIdAndUpdate(userId,{ projects: projs}).update();
   }
 
   async getPrinciple(userId:String,projId:String,principleId){

@@ -1,22 +1,22 @@
 import { Document } from 'mongoose';
 
-export interface ToDoInt extends Document{
+export interface ToDoInt {
     readonly name: string;
     readonly dueDate:Date;
     readonly complete:boolean;
     readonly description:string;
 }
-export interface CropInt extends Document{
+export interface CropInt {
     readonly name:string;
     readonly description:string;
     readonly todos:Array<ToDoInt>;
 }
-export interface GardenBedInt extends Document{
+export interface GardenBedInt {
     readonly name:string;
     readonly description:string;
     readonly crops: Array<CropInt>
 }
-export interface ZoneInt extends Document{
+export interface ZoneInt {
     readonly id:number,
     readonly name:string;
     readonly description:string;

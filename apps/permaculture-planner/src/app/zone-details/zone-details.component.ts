@@ -31,14 +31,14 @@ export class ZoneDetailsComponent implements OnInit {
       console.log(element)
     })
   }
-  // addGardenBed(bedName:string, bedDesc:string){
-  //   const user = this.username;
-  //   const project = this.projectName;
-  //   const zone = this.zoneName;
-  //   const bed = new GardenBed(bedName, bedDesc);
-  //   this.http.post('/api/addGardenBed/',{user, project, zone, bed}).subscribe(()=>{
-  //     this.fetch;
-  //   });
-  // }
+  addGardenBed(bedName:string, bedDesc:string){
+    const user = this.userId;
+    const project = this.projectId;
+    const zone = this.zoneName;
+    const bed = new GardenBed(bedName, bedDesc);
+    this.http.put('/api/users/'+user+'/projects/'+project+'/garden/'+zone+'/addGB/',bed).subscribe(()=>{
+      this.fetch();
+    });
+  }
 
 }
