@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { UserInt, ProjectInt, ActivityInt, GardenBedInt } from 'libs/data/src/lib/data.interface';
+import { UserInt, ProjectInt, ActivityInt, GardenBedInt, CropInt } from 'libs/data/src/lib/data.interface';
 import { User, Project, Activity, GardenBed } from 'libs/data/src/lib/data';
 
 
@@ -78,6 +78,22 @@ export class AppService {
       }
     });
     return await bed;
+  }
+  async createCrop(userId: String, projId: String, zoneId:String, gardenBedName: String, newCrop:CropInt){
+    const user = await this.userModel.findById(userId);
+    const projectID = +projId;
+    const project = user.projects[projectID];
+    const zoneID = +zoneId;
+    const zone = project.garden[zoneID-1];
+    let bed:GardenBed;
+    zone.beds.forEach(element => {
+      if(element.name===gardenBedName){
+        bed = element;
+      }
+    });
+    bed.crops.push(newCrop);
+    const projs = user.projects;
+    return this.userModel.findByIdAndUpdate(userId,{ projects: projs}).update();
   }
 
 

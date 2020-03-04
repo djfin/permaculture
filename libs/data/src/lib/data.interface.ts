@@ -8,6 +8,7 @@ export interface ToDoInt {
 }
 export interface CropInt {
     readonly name:string;
+    readonly datePlanted: Date;
     readonly description:string;
     readonly todos:Array<ToDoInt>;
 }

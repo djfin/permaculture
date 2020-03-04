@@ -12,6 +12,7 @@ export const ToDoSchema = new mongoose.Schema(
 export const CropSchema = new mongoose.Schema(
     {
         name:String,
+        datePlanted: Date,
         description:String,
         todos:Array,
     }

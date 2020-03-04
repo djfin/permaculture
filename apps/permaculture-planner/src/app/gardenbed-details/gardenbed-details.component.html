@@ -16,7 +16,20 @@
         <label> Crop Description: <br>
             <input #cropDescription/>
         </label>
-        <button id=add-Crop>
+        <br> 
+        <label> Date Planted: </label>
+        <form class="form-inline">
+            <div class="form-group">
+              <div class="input-group">
+                <input #datePlanted class="form-control" placeholder="yyyy-mm-dd"
+                       name="datePlanted" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="calendar" (click)="d.toggle()" type="button"></button>
+                </div>
+              </div>
+            </div>
+          </form>
+        <button id=add-Crop (click)='addCrop(cropName.value, cropDescription.value, datePlanted.value);'>
             add
         </button>
     </div>

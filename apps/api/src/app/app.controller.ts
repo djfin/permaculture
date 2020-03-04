@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Param, Query, UseGuards, Req, Put, HttpException, HttpStatus } from '@nestjs/common';
 import { Project, User, GardenBed } from '@permaculture/data';
 import { AppService } from './app.service';
-import { GardenBedInt } from 'libs/data/src/lib/data.interface';
+import { GardenBedInt, CropInt } from 'libs/data/src/lib/data.interface';
 
 @Controller()
 export class AppController {
@@ -64,5 +64,9 @@ export class AppController {
   @Get('users/:userId/projects/:projName/garden/:zoneId/beds/:gardenBedName')
   async getGardenBed(@Param('userId') userId,@Param('projName') projName, @Param('zoneId') zoneId, @Param('gardenBedName') gardenBedName) {
     return this.appService.getGardenBed(userId,projName,zoneId, gardenBedName);
+  }
+  @Put('users/:userId/projects/:projName/garden/:zoneId/beds/:gardenBedName/addCrop/')
+  async addCrop(@Param('userId') userId,@Param('projName') projName, @Param('zoneId') zoneId, @Param('gardenBedName') gardenBedName, @Body() newCrop: CropInt){
+    return this.appService.createCrop(userId,projName,zoneId,gardenBedName,newCrop)
   }
 }

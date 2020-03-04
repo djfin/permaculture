@@ -13,6 +13,10 @@ import { ZoneDetailsComponent } from './zone-details/zone-details.component';
 import { PrincipleDetailsComponent } from './principle-details/principle-details.component';
 import { ActivityDetailsComponent } from './activity-details/activity-details.component';
 import { GardenbedDetailsComponent } from './gardenbed-details/gardenbed-details.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [AppComponent, ProjectDetailsComponent, ProjectsComponent, LoginComponent, NewUserComponent, ZoneDetailsComponent, PrincipleDetailsComponent, ActivityDetailsComponent, GardenbedDetailsComponent],
@@ -20,6 +24,8 @@ import { GardenbedDetailsComponent } from './gardenbed-details/gardenbed-details
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    NgbModule, 
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

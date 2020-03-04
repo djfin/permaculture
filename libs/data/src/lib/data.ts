@@ -1,3 +1,4 @@
+import { timingSafeEqual } from 'crypto';
 
 
 export class ToDo{
@@ -9,7 +10,15 @@ export class ToDo{
 export class Crop{
     readonly name:string;
     readonly description:string;
+    readonly datePlanted: Date;
     readonly todos:Array<ToDo>;
+
+    constructor(name: string, description: string, datePlanted:Date){
+        this.name = name;
+        this.description = description;
+        this.datePlanted = datePlanted;
+        this.todos = new Array<ToDo>();
+    }
 }
 export class GardenBed{
     readonly name:string;

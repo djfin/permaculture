@@ -1,8 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GardenBed } from '@permaculture/data';
+import { GardenBed, Crop } from '@permaculture/data';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+
+
+
 
 @Component({
   selector: 'permaculture-gardenbed-details',
@@ -15,6 +18,8 @@ export class GardenbedDetailsComponent implements OnInit {
   @Input() zoneName:string;
   @Input() gardenBedName: string;
   gardenBed$ : Observable<GardenBed>
+  model;
+  
 
 
   constructor(private activatedRoute: ActivatedRoute, private http: HttpClient, private router:Router) { }
@@ -34,6 +39,17 @@ export class GardenbedDetailsComponent implements OnInit {
     this.gardenBed$.forEach(element=>{
       console.log(element)
     })
+  }
+
+  addCrop(cropName:string, cropDesc:string, datePlanted: Date){
+    const user = this.userId;
+    const project = this.projectId;
+    const zone = this.zoneName;
+    const gardenBed = this.gardenBedName
+    const crop = new Crop(cropName,cropDesc,datePlanted);
+    this.http.put('/api/users/'+user+'/projects/'+project+'/garden/'+zone+'/beds/'+gardenBed+'/addCrop/',crop).subscribe(()=>{
+      this.fetch();
+    });
   }
 
 }
