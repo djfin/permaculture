@@ -12,9 +12,10 @@ import { NewUserComponent } from './new-user/new-user.component';
 import { ZoneDetailsComponent } from './zone-details/zone-details.component';
 import { PrincipleDetailsComponent } from './principle-details/principle-details.component';
 import { ActivityDetailsComponent } from './activity-details/activity-details.component';
+import { GardenbedDetailsComponent } from './gardenbed-details/gardenbed-details.component';
 
 @NgModule({
-  declarations: [AppComponent, ProjectDetailsComponent, ProjectsComponent, LoginComponent, NewUserComponent, ZoneDetailsComponent, PrincipleDetailsComponent, ActivityDetailsComponent],
+  declarations: [AppComponent, ProjectDetailsComponent, ProjectsComponent, LoginComponent, NewUserComponent, ZoneDetailsComponent, PrincipleDetailsComponent, ActivityDetailsComponent, GardenbedDetailsComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

@@ -1,0 +1,23 @@
+<div *ngIf='gardenBed$ | async as gardenBed'>
+    <h1>{{gardenBed.name}}:</h1>
+    <h3>{{gardenBed.description}}</h3>
+    <h5> Garden Beds</h5>
+    <ul *ngFor="let crop of gardenBed.crops" class="gardenBed">
+    <li >
+        <a routerLink='/users/{{userId}}/projects/{{projectId}}/garden/{{zoneName}}/gardenBeds/{{gardenBedName}}/crops/{{crop.name}}'>
+            {{crop.name}}
+        </a>
+    </li>
+    </ul>
+    <div>
+        <label>Crop Name: <br>
+            <input #cropName />
+        </label><br>
+        <label> Crop Description: <br>
+            <input #cropDescription/>
+        </label>
+        <button id=add-Crop>
+            add
+        </button>
+    </div>
+</div>

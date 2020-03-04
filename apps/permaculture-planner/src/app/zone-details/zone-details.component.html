@@ -4,7 +4,7 @@
     <h5> Garden Beds</h5>
     <ul *ngFor="let gardenBed of zone.beds" class="zone">
     <li >
-        <a routerLink='/users/{{userId}}/projects/{{projectId}}/garden/{{zone.name}}/gardenBeds/{{gardenBed.name}}'>
+        <a routerLink='/users/{{userId}}/projects/{{projectId}}/garden/{{zone.id}}/gardenBeds/{{gardenBed.name}}'>
             {{gardenBed.name}}
         </a>
     </li>

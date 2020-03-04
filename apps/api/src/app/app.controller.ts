@@ -58,7 +58,11 @@ export class AppController {
     return this.appService.updateActivity(userId,projName,principleId,activityId,activityIn)
   }
   @Put('users/:userId/projects/:projName/garden/:zoneId/addGB/')
-    async addGardenBed(@Param('userId') userId,@Param('projName') projName, @Param('zoneId') zoneId, @Body() newBed:GardenBedInt){
-      return this.appService.createGardenBed(userId,projName,zoneId,newBed)
-    }
+  async addGardenBed(@Param('userId') userId,@Param('projName') projName, @Param('zoneId') zoneId, @Body() newBed:GardenBedInt){
+    return this.appService.createGardenBed(userId,projName,zoneId,newBed)
+  }
+  @Get('users/:userId/projects/:projName/garden/:zoneId/beds/:gardenBedName')
+  async getGardenBed(@Param('userId') userId,@Param('projName') projName, @Param('zoneId') zoneId, @Param('gardenBedName') gardenBedName) {
+    return this.appService.getGardenBed(userId,projName,zoneId, gardenBedName);
+  }
 }

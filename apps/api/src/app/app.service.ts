@@ -65,6 +65,21 @@ export class AppService {
     const projs = user.projects;
     return this.userModel.findByIdAndUpdate(userId,{ projects: projs}).update();
   }
+  async getGardenBed(userId:String, projId:String,zoneId:String, gardenBedName: String){
+    const user = await this.userModel.findById(userId);
+    const projectID = +projId;
+    const project = user.projects[projectID];
+    const zoneID = +zoneId;
+    const zone = project.garden[zoneID-1];
+    let bed;
+    zone.beds.forEach(element => {
+      if(element.name===gardenBedName){
+        bed = element;
+      }
+    });
+    return await bed;
+  }
+
 
   async getPrinciple(userId:String,projId:String,principleId){
     const user = await this.userModel.findById(userId);
