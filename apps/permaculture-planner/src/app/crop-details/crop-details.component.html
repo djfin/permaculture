@@ -1,27 +1,27 @@
-<div *ngIf='gardenBed$ | async as gardenBed'>
-    <h1>{{gardenBed.name}}:</h1>
-    <h3>{{gardenBed.description}}</h3>
-    <h5> Garden Beds</h5>
-    <ul *ngFor="let crop of gardenBed.crops" class="crop">
+<div *ngIf='crop$ | async as crop'>
+    <h1>{{crop.name}}:</h1>
+    <h3>{{crop.description}}</h3>
+    <h5> To Do: </h5>
+    <ul *ngFor="let todo of crop.todos" class="toDo">
     <li >
         <a routerLink='/users/{{userId}}/projects/{{projectId}}/garden/{{zoneName}}/gardenBeds/{{gardenBedName}}/crops/{{crop.name}}'>
-            {{crop.name}}
+            {{todo.name}}
         </a>
     </li>
     </ul>
     <div>
-        <label>Crop Name: <br>
-            <input #cropName />
+        <label>To Do Name: <br>
+            <input #toDoName />
         </label><br>
-        <label> Crop Description: <br>
-            <input #cropDescription/>
+        <label> To Do Description: <br>
+            <input #toDoDescription/>
         </label>
         <br> 
-        <label> Date Planted: </label>
+        <label> Date Due: </label>
         <form class="form-inline">
             <div class="form-group">
               <div class="input-group">
-                <input #datePlanted class="form-control" placeholder="yyyy-mm-dd"
+                <input #dateDue class="form-control" placeholder="yyyy-mm-dd"
                        name="datePlanted" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
                 <div class="input-group-append">
                   <button class="calendar" (click)="d.toggle()" type="button"></button>
@@ -29,7 +29,7 @@
               </div>
             </div>
           </form>
-        <button id=add-Crop (click)='addCrop(cropName.value, cropDescription.value, datePlanted.value);'>
+        <button id=add-ToDo (click)='addToDo(toDoName.value, toDoDescription.value, dateDue.value);'>
             add
         </button>
     </div>

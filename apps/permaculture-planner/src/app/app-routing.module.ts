@@ -8,6 +8,7 @@ import { ZoneDetailsComponent } from './zone-details/zone-details.component';
 import { PrincipleDetailsComponent } from './principle-details/principle-details.component';
 import { ActivityDetailsComponent } from './activity-details/activity-details.component';
 import { GardenbedDetailsComponent } from './gardenbed-details/gardenbed-details.component';
+import { CropDetailsComponent } from './crop-details/crop-details.component';
 const routes: Routes = [
     {
         path: '',
@@ -45,6 +46,11 @@ const routes: Routes = [
     {
         path:'users/:user/projects/:project/eduCourse/:principle/activities/:activity',
         component: ActivityDetailsComponent,
+        pathMatch:'full'
+    },
+    {
+        path:'users/:user/projects/:project/garden/:zone/gardenBeds/:gardenBed/crops/:crop',
+        component: CropDetailsComponent,
         pathMatch:'full'
     }
 ];

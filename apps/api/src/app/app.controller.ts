@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Param, Query, UseGuards, Req, Put, HttpException, HttpStatus } from '@nestjs/common';
 import { Project, User, GardenBed } from '@permaculture/data';
 import { AppService } from './app.service';
-import { GardenBedInt, CropInt } from 'libs/data/src/lib/data.interface';
+import { GardenBedInt, CropInt, ToDoInt } from 'libs/data/src/lib/data.interface';
 
 @Controller()
 export class AppController {
@@ -68,5 +68,13 @@ export class AppController {
   @Put('users/:userId/projects/:projName/garden/:zoneId/beds/:gardenBedName/addCrop/')
   async addCrop(@Param('userId') userId,@Param('projName') projName, @Param('zoneId') zoneId, @Param('gardenBedName') gardenBedName, @Body() newCrop: CropInt){
     return this.appService.createCrop(userId,projName,zoneId,gardenBedName,newCrop)
+  }
+  @Get('users/:userId/projects/:projName/garden/:zoneId/beds/:gardenBedName/crops/:cropName')
+  async getCrop(@Param('userId') userId,@Param('projName') projName, @Param('zoneId') zoneId, @Param('gardenBedName') gardenBedName, @Param('cropName') cropName) {
+    return this.appService.getCrop(userId,projName,zoneId, gardenBedName, cropName);
+  }
+  @Put('users/:userId/projects/:projName/garden/:zoneId/beds/:gardenBedName/crops/:cropName/addToDo')
+  async addTodo(@Param('userId') userId,@Param('projName') projName, @Param('zoneId') zoneId, @Param('gardenBedName') gardenBedName, @Param('cropName') cropName,@Body() newToDo: ToDoInt){
+    return this.appService.createToDo(userId,projName,zoneId,gardenBedName,cropName, newToDo)
   }
 }

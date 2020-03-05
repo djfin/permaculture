@@ -6,6 +6,13 @@ export class ToDo{
     readonly dueDate:Date;
     readonly complete:boolean;
     readonly description:string;
+
+    constructor(name: string, description: string, dueDate: Date){
+        this.name=name;
+        this.description=description;
+        this.dueDate=dueDate;
+        this.complete=false;
+    }
 }
 export class Crop{
     readonly name:string;
