@@ -1,10 +1,11 @@
 <div *ngIf='crop$ | async as crop'>
     <h1>{{crop.name}}:</h1>
     <h3>{{crop.description}}</h3>
+    <h3>Planted on {{crop.datePlanted}}</h3>
     <h5> To Do: </h5>
     <ul *ngFor="let todo of crop.todos" class="toDo">
     <li >
-        <a routerLink='/users/{{userId}}/projects/{{projectId}}/garden/{{zoneName}}/gardenBeds/{{gardenBedName}}/crops/{{crop.name}}'>
+        <a routerLink='/users/{{userId}}/projects/{{projectId}}/garden/{{zoneName}}/gardenBeds/{{gardenBedName}}/crops/{{crop.name}}/todos/{{todo.name}}'>
             {{todo.name}}
         </a>
     </li>

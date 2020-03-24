@@ -16,11 +16,12 @@ import { GardenbedDetailsComponent } from './gardenbed-details/gardenbed-details
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { CropDetailsComponent } from './crop-details/crop-details.component';
+import { TodoDetailsComponent } from './todo-details/todo-details.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent, ProjectDetailsComponent, ProjectsComponent, LoginComponent, NewUserComponent, ZoneDetailsComponent, PrincipleDetailsComponent, ActivityDetailsComponent, GardenbedDetailsComponent, CropDetailsComponent],
+  declarations: [AppComponent, ProjectDetailsComponent, ProjectsComponent, LoginComponent, NewUserComponent, ZoneDetailsComponent, PrincipleDetailsComponent, ActivityDetailsComponent, GardenbedDetailsComponent, CropDetailsComponent, TodoDetailsComponent],
   imports: [
     BrowserModule,
     HttpClientModule,

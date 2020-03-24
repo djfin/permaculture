@@ -77,4 +77,8 @@ export class AppController {
   async addTodo(@Param('userId') userId,@Param('projName') projName, @Param('zoneId') zoneId, @Param('gardenBedName') gardenBedName, @Param('cropName') cropName,@Body() newToDo: ToDoInt){
     return this.appService.createToDo(userId,projName,zoneId,gardenBedName,cropName, newToDo)
   }
+  @Get('users/:userId/projects/:projName/garden/:zoneId/beds/:gardenBedName/crops/:cropName/todos/:todoName')
+  async getToDo(@Param('userId') userId,@Param('projName') projName, @Param('zoneId') zoneId, @Param('gardenBedName') gardenBedName, @Param('cropName') cropName, @Param('todoName') todoName) {
+    return this.appService.getTodo(userId,projName,zoneId, gardenBedName, cropName, todoName);
+  }
 }

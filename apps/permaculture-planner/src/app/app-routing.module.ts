@@ -9,6 +9,7 @@ import { PrincipleDetailsComponent } from './principle-details/principle-details
 import { ActivityDetailsComponent } from './activity-details/activity-details.component';
 import { GardenbedDetailsComponent } from './gardenbed-details/gardenbed-details.component';
 import { CropDetailsComponent } from './crop-details/crop-details.component';
+import { TodoDetailsComponent } from './todo-details/todo-details.component';
 const routes: Routes = [
     {
         path: '',
@@ -51,6 +52,11 @@ const routes: Routes = [
     {
         path:'users/:user/projects/:project/garden/:zone/gardenBeds/:gardenBed/crops/:crop',
         component: CropDetailsComponent,
+        pathMatch:'full'
+    },
+    {
+        path:'users/:user/projects/:project/garden/:zone/gardenBeds/:gardenBed/crops/:crop/todos/:todo',
+        component: TodoDetailsComponent,
         pathMatch:'full'
     }
 ];
