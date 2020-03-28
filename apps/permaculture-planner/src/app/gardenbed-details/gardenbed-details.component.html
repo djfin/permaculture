@@ -1,7 +1,7 @@
 <div *ngIf='gardenBed$ | async as gardenBed'>
     <h1>{{gardenBed.name}}:</h1>
     <h3>{{gardenBed.description}}</h3>
-    <h5> Garden Beds</h5>
+    <h5> Crops</h5>
     <ul *ngFor="let crop of gardenBed.crops" class="crop">
     <li >
         <a routerLink='/users/{{userId}}/projects/{{projectId}}/garden/{{zoneName}}/gardenBeds/{{gardenBedName}}/crops/{{crop.name}}'>

@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 export interface ToDoInt {
     readonly name: string;
     readonly dueDate:Date;
-    readonly complete:boolean;
+    complete:boolean;
     readonly description:string;
 }
 export interface CropInt {

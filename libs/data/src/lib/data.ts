@@ -4,7 +4,7 @@ import { timingSafeEqual } from 'crypto';
 export class ToDo{
     readonly name: string;
     readonly dueDate:Date;
-    readonly complete:boolean;
+    complete:boolean;
     readonly description:string;
 
     constructor(name: string, description: string, dueDate: Date){

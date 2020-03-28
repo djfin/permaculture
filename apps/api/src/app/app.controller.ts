@@ -81,4 +81,8 @@ export class AppController {
   async getToDo(@Param('userId') userId,@Param('projName') projName, @Param('zoneId') zoneId, @Param('gardenBedName') gardenBedName, @Param('cropName') cropName, @Param('todoName') todoName) {
     return this.appService.getTodo(userId,projName,zoneId, gardenBedName, cropName, todoName);
   }
+  @Put('users/:userId/projects/:projName/garden/:zoneId/beds/:gardenBedName/crops/:cropName/todos/:todoName/complete')
+  async toggleComplete(@Param('userId') userId,@Param('projName') projName, @Param('zoneId') zoneId, @Param('gardenBedName') gardenBedName, @Param('cropName') cropName, @Param('todoName') todoName) {
+    return this.appService.toggleCompleteToDo(userId,projName,zoneId, gardenBedName, cropName, todoName);
+  }
 }

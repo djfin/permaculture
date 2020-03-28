@@ -2,5 +2,5 @@
     <h1>{{todo.name}}:</h1>
     <h3>{{todo.description}}</h3>
     <h3>Due on {{todo.dueDate}}</h3>
-    <h5></h5>
+    <label>Complete? </label><button (click)= toggleCompleteToDo()>{{todo.complete}}</button>
 </div>

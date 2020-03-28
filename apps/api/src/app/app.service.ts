@@ -164,6 +164,39 @@ export class AppService {
     return await todo;
   }
 
+  async toggleCompleteToDo(userId:String, projId:String,zoneId:String, gardenBedName: String, cropName: String, todoName:String){
+    const user = await this.userModel.findById(userId);
+    const projectID = +projId;
+    const project = user.projects[projectID];
+    const  zoneID = +zoneId;
+    const  zone = project.garden[zoneID-1];
+    let bed:GardenBed;
+    zone.beds.forEach(element => {
+      if(element.name===gardenBedName){
+        bed = element;
+      }
+    });
+    let crop:Crop;
+    bed.crops.forEach(element =>{
+      if(element.name=== cropName){
+        crop = element
+      }
+    })
+    let todo:ToDo;
+    crop.todos.forEach(element =>{
+      if(element.name=== todoName){
+        todo=element
+      }
+    })
+    if(todo.complete){
+      todo.complete=false
+    }else{
+      todo.complete=true
+    }
+    const projs = user.projects;
+    return this.userModel.findByIdAndUpdate(userId,{ projects: projs}).update();
+  }
+
 
 
   async getPrinciple(userId:String,projId:String,principleId){
